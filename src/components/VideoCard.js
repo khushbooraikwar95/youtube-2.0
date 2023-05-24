@@ -13,7 +13,7 @@ const VideoCard = ({ info }) => {
       <img className="rounded-lg" src={thumbnails.medium.url} alt="thumbnail" />
       <ul>
         <li className="font-bold py-2">{title}</li>
-        <li className="flex flex-wrap">
+        <li className="flex flex-wrap items-center ">
           {channelTitle} <VerifiedTick />
         </li>
 

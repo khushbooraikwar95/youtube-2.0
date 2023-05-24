@@ -7,7 +7,7 @@ const VerifiedTick = () => {
       class="style-scope yt-icon"
       // eslint-disable-next-line react/style-prop-object
       //   style="pointer-events: none; display: block; width: 100%; height: 100%;"
-      className="pointer-events-none w-4 h-4"
+      className=" pointer-events-none w-4 h-4 "
     >
       <g class="style-scope yt-icon">
         <path
