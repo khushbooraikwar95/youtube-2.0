@@ -1,25 +1,26 @@
 import React from "react";
+import { convertViews } from "../utils/helper";
+import VerifiedTick from "../icons/verfiedTick";
 
 const VideoCard = ({ info }) => {
-  console.log(info);
-
   const { snippet, statistics } = info;
 
-  console.log("first", snippet, statistics);
   const { channelTitle, title, thumbnails } = snippet;
-  console.log("second:", channelTitle, title, thumbnails);
 
-  return <div>khu</div>;
-  //   (
-  // <div>
-  //   <img src={thumbnails.high} alt="thumbnail" />
-  //   <ul>
-  //     <li>{title}</li>
-  //     <li>{channelTitle}</li>
-  //     <li>{statistics.viewCount}</li>
-  //   </ul>
-  // </div>
-  //   );
+  const views = convertViews(statistics.viewCount);
+  return (
+    <div className="p-2 m-2 w-80 shadow-lg">
+      <img className="rounded-lg" src={thumbnails.medium.url} alt="thumbnail" />
+      <ul>
+        <li className="font-bold py-2">{title}</li>
+        <li className="flex flex-wrap">
+          {channelTitle} <VerifiedTick />
+        </li>
+
+        <li>{views} views </li>
+      </ul>
+    </div>
+  );
 };
 
 export default VideoCard;
