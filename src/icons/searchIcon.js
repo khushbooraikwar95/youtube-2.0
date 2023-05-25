@@ -5,8 +5,7 @@ const SearchIcon = () => {
       preserveAspectRatio="xMidYMid meet"
       focusable="false"
       class="style-scope yt-icon"
-      classname="pointer-events: none 
-      display: block; w-4 h-4"
+      classname="pointer-events-none w-4 h-4"
     >
       <g class="style-scope yt-icon">
         <path
