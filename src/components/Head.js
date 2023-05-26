@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,12 +10,28 @@ const Head = () => {
   const [showSugguestions, setShowSuggestions] = useState(false);
   console.log(searchQuery);
 
+  const searchCache = useSelector((store) => store.search);
+  const dispatch = useDispatch();
+
+  /*
+
+{
+  ihone: ["iphone11", "ihone14"]
+}
+  */
+
   useEffect(() => {
     // API call
     // make an api call after evry key press
     // but if the diffrence between 2 APi calls is <200ms
     // then decline the api call
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
 
     return () => {
       clearTimeout(timer);
@@ -27,9 +44,15 @@ const Head = () => {
     const json = await data.json();
     // console.log(json[1]);
     setSuggestions(json[1]);
-  };
 
-  const dispatch = useDispatch();
+    // update in my cache
+
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
+  };
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -57,6 +80,7 @@ const Head = () => {
           <input
             type="text"
             className="border px-5 py-2 w-1/2  rounded-l-full"
+            placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
