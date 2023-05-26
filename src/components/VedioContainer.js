@@ -23,7 +23,8 @@ const VedioContainer = () => {
     <Shimmer />
   ) : (
     <div className="flex flex-wrap">
-      {videos[0] && <AdVideoCard info={videos[0]} />}
+      {/*code for showing ad on youtube*/}
+      {/*videos[0] && <AdVideoCard info={videos[0]} />*/}
       {videos.map((video) => (
         <Link to={"/watch?v=" + video.id} key={video.id}>
           <VideoCard info={video} />
