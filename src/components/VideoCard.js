@@ -16,7 +16,6 @@ const VideoCard = ({ info }) => {
         <li className="flex flex-wrap items-center ">
           {channelTitle} <VerifiedTick />
         </li>
-
         <li>{views} views </li>
       </ul>
     </div>
