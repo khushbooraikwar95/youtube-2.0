@@ -8,7 +8,6 @@ const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSugguestions, setShowSuggestions] = useState(false);
-  console.log(searchQuery);
 
   const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
