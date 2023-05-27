@@ -103,7 +103,7 @@ const Head = () => {
         <img
           className="h-8"
           alt="user-icon"
-          src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+          src="https://as2.ftcdn.net/v2/jpg/02/29/75/83/1000_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
         />
       </div>
     </div>
