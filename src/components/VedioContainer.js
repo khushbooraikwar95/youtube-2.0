@@ -16,7 +16,6 @@ const VedioContainer = () => {
     const json = await data.json();
     setVideos(json.items);
     const { items } = json;
-    console.log(items);
   };
 
   return videos.length === 0 ? (
