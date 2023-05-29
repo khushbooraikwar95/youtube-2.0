@@ -50,6 +50,7 @@ const LiveChat = () => {
               message: liveMsg,
             })
           );
+          setLiveMsg("");
         }}
       >
         <input
