@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { setCurrentVideo } from "../utils/videoSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -57,6 +58,11 @@ const Head = () => {
     dispatch(toggleMenu());
   };
 
+  const handleSuggestionClick = (video) => {
+    dispatch(setCurrentVideo(video));
+    console.log("Clicked on suggestion");
+  };
+
   return (
     <div className="grid grid-flow-col p-2 m-2 shadow-lg">
       <div className="flex col-span-1">
@@ -91,7 +97,10 @@ const Head = () => {
           <div className=" absolute bg-white py-2 px-2 w-[41.5rem] rounded-lg shadow-xl border border-gray-100">
             <ul>
               {suggestions.map((sugggestion) => (
-                <li className="py-2 shadow-sm hover:bg-gray-200">
+                <li
+                  className="py-2 shadow-sm hover:bg-gray-200"
+                  onClick={() => handleSuggestionClick(sugggestion)}
+                >
                   {sugggestion}
                 </li>
               ))}
